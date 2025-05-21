@@ -5,30 +5,17 @@ import './App.css'
 
 function App() {
 
-    const [stateCount, setStateCount] = useState(0);
-    const refCount = useRef(0)
-
-    useEffect(() => {
-        console.log('Component Rendered!')
-    })
-
-    // console.log(myRef)
-    const incrementStateCount = () => {
-        setStateCount(stateCount + 1);
-    }
-
-    const incrementRefCount = () => {
-        refCount.current += 1;
-        console.log(`Ref Count: ${refCount.current}`);
+    const inputRef = useRef(null);
+    const focusInput = () => {
+        inputRef.current.focus();
+        inputRef.current.style.backgroundColor = 'yellow';
     }
 
   return (
     <div>
-        <p>State Count: {stateCount}</p>
-        <button onClick={incrementStateCount}>Increment State count</button>
-
-        <p>Ref Count: {refCount.current}</p>
-        <button onClick={incrementRefCount}>Increment Ref count</button>
+        <h1>Learn React</h1>
+        <input ref={inputRef} type='text' placeholder='Focus Me' />
+        <button onClick={focusInput}>Focus</button>
     </div>
   )
 }
